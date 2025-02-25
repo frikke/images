@@ -18,18 +18,25 @@ check "gitconfig-contains-name" sh -c "cat /etc/gitconfig | grep 'name = devcont
 
 check "usr-local-etc-config-does-not-exist" test ! -f "/usr/local/etc/gitconfig"
 
-cryptography_version=$(python -c "import cryptography; print(cryptography.__version__)")
-check-version-ge "cryptography-requirement" "${cryptography_version}" "38.0.3"
+checkPythonPackageVersion "cryptography" "43.0.1"
+checkPythonPackageVersion "setuptools" "65.5.1"
+checkPythonPackageVersion "wheel" "0.38.1"
+checkPythonPackageVersion "urllib3" "2.2.2"
+
+checkCondaPackageVersion "cryptography" "43.0.1"
+checkCondaPackageVersion "setuptools" "65.5.1"
+checkCondaPackageVersion "wheel" "0.38.1"
+checkCondaPackageVersion "requests" "2.32.0"
+checkCondaPackageVersion "urllib3" "1.26.17"
+checkCondaPackageVersion "idna" "3.7"
+checkCondaPackageVersion "tqdm" "4.66.4"
+checkCondaPackageVersion "certifi" "2024.7.4"
 
 check "conda-update-conda" bash -c "conda update -y conda"
-check "conda-install" bash -c "conda install -c conda-forge --yes tensorflow"
-check "conda-install" bash -c "conda install -c conda-forge --yes pytorch"
+check "conda-install-tensorflow" bash -c "conda create --name test-env -c conda-forge --yes tensorflow"
+check "conda-install-pytorch" bash -c "conda create --name test-env -c conda-forge --yes pytorch"
 
-setuptools_version=$(python -c "import setuptools; print(setuptools.__version__)")
-check-version-ge "setuptools-requirement" "${setuptools_version}" "65.5.1"
-
-wheel_version=$(python -c "import wheel; print(wheel.__version__)")
-check-version-ge "wheel-requirement" "${wheel_version}" " 0.38.1"
+checkPipWorkingCorrectly
 
 # Report result
 reportResults

@@ -1,5 +1,4 @@
-# [Choice] Debian OS version (use 3.2-bullseye on local arm64/Apple Silicon): 3.2-bullseye, 3.2-buster
-ARG VARIANT=3.2-bullseye
+ARG VARIANT=3.3-bookworm
 FROM mcr.microsoft.com/devcontainers/ruby:${VARIANT}
 
 USER root
@@ -14,6 +13,10 @@ ENV LANG=en_US.UTF-8 \
 
 # Install bundler, latest jekyll, and github-pages for older jekyll
 RUN gem update --system
+
+# https://github.com/ntkme/sass-embedded-host-ruby/issues/130
+RUN gem install sass-embedded -v 1.62.1
+RUN gem install jekyll-sass-converter -v 3.0.0
 RUN gem install bundler jekyll github-pages
 
 RUN chown -R "vscode:rvm" "/usr/local/rvm/" \

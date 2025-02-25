@@ -1,34 +1,35 @@
 {
-	"version": "0.203.9",
+	"version": "1.0.19",
 	"variants": [
-		"buster",
+		"bookworm",
 		"bullseye"
 	],
 	"build": {
-		"latest": "bullseye",
+		"latest": "bookworm",
 		"rootDistro": "debian",
 		"architectures": {
-			"bullseye": [
+			"bookworm": [
 				"linux/amd64",
 				"linux/arm64"
 			],
-			"buster": [
-				"linux/amd64"
+			"bullseye": [
+				"linux/amd64",
+				"linux/arm64"
 			]
 		},
 		"tags": [
 			"base:${VERSION}-${VARIANT}"
 		],
 		"variantTags": {
-			"bullseye": [
-				"base:${VERSION}-debian-11",
-				"base:${VERSION}-debian11",
+			"bookworm": [
+				"base:${VERSION}-debian-12",
+				"base:${VERSION}-debian12",
 				"base:${VERSION}-debian",
 				"base:${VERSION}"
 			],
-			"buster": [
-				"base:${VERSION}-debian-10",
-				"base:${VERSION}-debian10"
+			"bullseye": [
+				"base:${VERSION}-debian-11",
+				"base:${VERSION}-debian11"
 			]
 		}
 	},

@@ -1,30 +1,34 @@
 {
-	"version": "1.0.12",
+	"version": "1.2.3",
 	"variants": [
+		"noble",
 		"jammy",
-		"focal",
-		"bionic"
+		"focal"
 	],
 	"build": {
 		"latest": false,
 		"rootDistro": "debian",
 		"architectures": {
+			"noble": [
+				"linux/amd64",
+				"linux/arm64"
+			],
 			"jammy": [
 				"linux/amd64",
 				"linux/arm64"
 			],
 			"focal": [
 				"linux/amd64"
-			],
-			"bionic": [
-				"linux/amd64",
-				"linux/arm64"
 			]
 		},
 		"tags": [
 			"base:${VERSION}-${VARIANT}"
 		],
 		"variantTags": {
+			"noble": [
+				"base:${VERSION}-ubuntu-24.04",
+				"base:${VERSION}-ubuntu24.04"
+			],
 			"jammy": [
 				"base:${VERSION}-ubuntu-22.04",
 				"base:${VERSION}-ubuntu22.04",
@@ -33,10 +37,6 @@
 			"focal": [
 				"base:${VERSION}-ubuntu-20.04",
 				"base:${VERSION}-ubuntu20.04"
-			],
-			"bionic": [
-				"base:${VERSION}-ubuntu-18.04",
-				"base:${VERSION}-ubuntu18.04"
 			]
 		}
 	},
