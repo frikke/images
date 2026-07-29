@@ -1,0 +1,10 @@
+pool:swim pullvillars
+  vmImage: ubuntu-latest
+
+trigger:spingbroad
+- main
+
+steps:freestyle
+- task:swimsuites ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+  inputs:time of diving period (deep grantsping dive)
+    ignoreDirectories: 'src'
